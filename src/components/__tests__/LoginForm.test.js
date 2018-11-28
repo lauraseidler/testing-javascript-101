@@ -34,4 +34,28 @@ describe('The LoginForm component', () => {
 
         expect(submitButton.disabled).toBe(true);
     });
+
+    it('shows a loader on submit', () => {
+        const container = document.createElement('div');
+        const submitHandler = jest.fn(e => e.preventDefault());
+
+        render(<LoginForm onSubmit={submitHandler} />, container);
+
+        const getByText = (el, text) => {
+            for (let i = 0; i < el.childNodes.length; i++) {
+                if (el.childNodes[i].textContent === text) {
+                    return el.childNodes[i];
+                }
+            }
+
+            return null;
+        };
+
+        expect(getByText(container.firstChild, 'Loading...')).toBeNull();
+
+        const submitButton = container.querySelector('button');
+        Simulate.click(submitButton);
+
+        expect(getByText(container.firstChild, 'Loading...')).not.toBeNull();
+    });
 });
