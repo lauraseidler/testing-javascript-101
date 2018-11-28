@@ -20,4 +20,21 @@ describe('The LoginForm component', () => {
 
         expect(submitHandler).toHaveBeenCalled();
     });
+
+    it('disables the button on submit', () => {
+        const container = document.createElement('div');
+        const submitHandler = jest.fn(e => e.preventDefault());
+
+        const loginForm = render(
+            <LoginForm onSubmit={submitHandler} />,
+            container
+        );
+
+        expect(loginForm.state.isSubmitButtonDisabled).toBe(false);
+
+        const submitButton = container.querySelector('button');
+        Simulate.click(submitButton);
+
+        expect(loginForm.state.isSubmitButtonDisabled).toBe(true);
+    });
 });
