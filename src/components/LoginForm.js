@@ -1,22 +1,40 @@
 import React from 'react';
 import Button from './Button';
 
-const LoginForm = ({ onSubmit }) => (
-    <form>
-        <label>
-            Username
-            <input name="username" type="text" />
-        </label>
+class LoginForm extends React.Component {
+    state = {
+        isSubmitButtonDisabled: false,
+    };
 
-        <label>
-            Password
-            <input name="password" type="pasword" />
-        </label>
+    submit = e => {
+        this.setState({
+            isSubmitButtonDisabled: true,
+        });
 
-        <Button type="submit" onClick={onSubmit}>
-            Login
-        </Button>
-    </form>
-);
+        this.props.onSubmit(e);
+    };
+
+    render = () => (
+        <form>
+            <label>
+                Username
+                <input name="username" type="text" />
+            </label>
+
+            <label>
+                Password
+                <input name="password" type="pasword" />
+            </label>
+
+            <Button
+                type="submit"
+                onClick={this.submit}
+                disabled={this.state.isSubmitButtonDisabled}
+            >
+                Login
+            </Button>
+        </form>
+    );
+}
 
 export default LoginForm;
