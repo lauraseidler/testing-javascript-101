@@ -3,14 +3,12 @@ import Button from './Button';
 
 class LoginForm extends React.Component {
     state = {
-        isSubmitButtonDisabled: false,
-        isLoaderVisible: false,
+        isSubmitting: false,
     };
 
     submit = e => {
         this.setState({
-            isSubmitButtonDisabled: true,
-            isLoaderVisible: true,
+            isSubmitting: true,
         });
 
         this.props.onSubmit(e);
@@ -18,7 +16,7 @@ class LoginForm extends React.Component {
 
     render = () => (
         <form>
-            {this.state.isLoaderVisible && <p>Loading...</p>}
+            {this.state.isSubmitting && <p>Loading...</p>}
 
             <label>
                 Username
@@ -33,7 +31,7 @@ class LoginForm extends React.Component {
             <Button
                 type="submit"
                 onClick={this.submit}
-                disabled={this.state.isSubmitButtonDisabled}
+                disabled={this.state.isSubmitting}
             >
                 Login
             </Button>

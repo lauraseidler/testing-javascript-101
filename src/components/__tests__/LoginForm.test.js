@@ -21,7 +21,7 @@ describe('The LoginForm component', () => {
         expect(submitHandler).toHaveBeenCalled();
     });
 
-    it('disables the button on submit', () => {
+    it('disables the button & shows loader on submit', () => {
         const container = document.createElement('div');
         const submitHandler = jest.fn(e => e.preventDefault());
 
@@ -30,28 +30,11 @@ describe('The LoginForm component', () => {
             container
         );
 
-        expect(loginForm.state.isSubmitButtonDisabled).toBe(false);
+        expect(loginForm.state.isSubmitting).toBe(false);
 
         const submitButton = container.querySelector('button');
         Simulate.click(submitButton);
 
-        expect(loginForm.state.isSubmitButtonDisabled).toBe(true);
-    });
-
-    it('shows a loader on submit', () => {
-        const container = document.createElement('div');
-        const submitHandler = jest.fn(e => e.preventDefault());
-
-        const loginForm = render(
-            <LoginForm onSubmit={submitHandler} />,
-            container
-        );
-
-        expect(loginForm.state.isLoaderVisible).toBe(false);
-
-        const submitButton = container.querySelector('button');
-        Simulate.click(submitButton);
-
-        expect(loginForm.state.isLoaderVisible).toBe(true);
+        expect(loginForm.state.isSubmitting).toBe(true);
     });
 });
