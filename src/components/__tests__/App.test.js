@@ -2,6 +2,10 @@ import React from 'react';
 import App from '../App';
 import { render, fireEvent, within } from 'react-testing-library';
 
+jest.mock('dummy-third-party-library', () =>
+    jest.fn(({ hide }) => (hide ? null : 'Third party content'))
+);
+
 describe('The App', () => {
     it('renders without crashing', () => {
         render(<App />);
@@ -19,5 +23,15 @@ describe('The App', () => {
         fireEvent.click(submitButton);
 
         expect(queryByText('Submitted!')).not.toBeNull();
+    });
+
+    it('hides third party library content based on prop', () => {
+        const { queryByText, rerender } = render(<App />);
+
+        expect(queryByText('Third party content')).not.toBeNull();
+
+        rerender(<App hide={true} />);
+
+        expect(queryByText('Third party content')).toBeNull();
     });
 });

@@ -1,6 +1,7 @@
 import React from 'react';
 import { getQueryParam } from '../helpers';
 import LoginForm from './LoginForm';
+import DummyThirdPartyLibrary from 'dummy-third-party-library';
 
 const user = getQueryParam(window.location.search, 'user') || 'everyone';
 
@@ -25,6 +26,8 @@ class App extends React.Component {
                 <LoginForm submitHandler={this.submitForm} />
 
                 {this.state.wasFormSubmitted && <p>Submitted!</p>}
+
+                <DummyThirdPartyLibrary hide={this.props.hide} />
             </React.Fragment>
         );
     }

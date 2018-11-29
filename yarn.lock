@@ -3017,6 +3017,11 @@ dotenv@6.0.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-6.0.0.tgz#24e37c041741c5f4b25324958ebbc34bca965935"
   integrity sha512-FlWbnhgjtwD+uNLUGHbMykMOYQaTivdHEmYwAKFjn6GKe/CqY0fNae93ZHTd20snh9ZLr8mTzIL9m0APQ1pjQg==
 
+dummy-third-party-library@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/dummy-third-party-library/-/dummy-third-party-library-1.0.0.tgz#6b5872e7fb005a4602fa09ac1297c12e7511f2e4"
+  integrity sha512-r6vOH+b8Twa/r+tem1I31Sq/Lxxu1RYrtFvxnGOLY4DcQRbGnjnmu4k6MVCWGdTGDAHzK0akUzPxMgnKoclz5g==
+
 duplexer@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/duplexer/-/duplexer-0.1.1.tgz#ace6ff808c1ce66b57d1ebf97977acb02334cfc1"
