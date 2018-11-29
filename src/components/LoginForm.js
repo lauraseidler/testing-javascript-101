@@ -1,7 +1,12 @@
 import React from 'react';
 import Button from './Button';
+import PropTypes from 'prop-types';
 
 class LoginForm extends React.Component {
+    static propTypes = {
+        submitHandler: PropTypes.func,
+    };
+
     state = {
         isSubmitting: false,
     };
@@ -11,7 +16,9 @@ class LoginForm extends React.Component {
             isSubmitting: true,
         });
 
-        this.props.onSubmit(e);
+        if (this.props.submitHandler) {
+            this.props.submitHandler(e);
+        }
     };
 
     render = () => (

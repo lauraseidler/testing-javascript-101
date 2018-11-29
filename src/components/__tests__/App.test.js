@@ -14,7 +14,7 @@ describe('The App', () => {
         expect(loginForm).not.toBeNull();
         expect(app.contains('Submitted!')).toBe(false);
 
-        loginForm.props().onSubmit({ preventDefault: () => null });
+        loginForm.props().submitHandler({ preventDefault: () => null });
 
         expect(app.contains('Submitted!')).toBe(true);
     });

@@ -8,7 +8,7 @@ describe('The LoginForm component', () => {
         const container = document.createElement('div');
         const submitHandler = jest.fn(e => e.preventDefault());
 
-        render(<LoginForm onSubmit={submitHandler} />, container);
+        render(<LoginForm submitHandler={submitHandler} />, container);
 
         const inputs = container.querySelectorAll('input');
         const submitButton = container.querySelector('button');
@@ -25,7 +25,7 @@ describe('The LoginForm component', () => {
         const container = document.createElement('div');
         const submitHandler = jest.fn(e => e.preventDefault());
 
-        render(<LoginForm onSubmit={submitHandler} />, container);
+        render(<LoginForm submitHandler={submitHandler} />, container);
 
         const submitButton = container.querySelector('button');
         expect(submitButton.disabled).toBe(false);
@@ -39,7 +39,7 @@ describe('The LoginForm component', () => {
         const container = document.createElement('div');
         const submitHandler = jest.fn(e => e.preventDefault());
 
-        render(<LoginForm onSubmit={submitHandler} />, container);
+        render(<LoginForm submitHandler={submitHandler} />, container);
 
         const getByText = (el, text) => {
             for (let i = 0; i < el.childNodes.length; i++) {
