@@ -4,12 +4,30 @@ import LoginForm from './LoginForm';
 
 const user = getQueryParam(window.location.search, 'user') || 'everyone';
 
-const App = () => (
-    <React.Fragment>
-        <h1>Welcome to JavaScript testing, {user}!</h1>
-        <h2>Login</h2>
-        <LoginForm onSubmit={e => e.preventDefault()} />
-    </React.Fragment>
-);
+class App extends React.Component {
+    state = {
+        wasFormSubmitted: false,
+    };
+
+    submitLoginForm = e => {
+        e.preventDefault();
+
+        this.setState({
+            wasFormSubmitted: true,
+        });
+    };
+
+    render() {
+        return (
+            <React.Fragment>
+                <h1>Welcome to JavaScript testing, {user}!</h1>
+                <h2>Login</h2>
+                <LoginForm onSubmit={this.submitLoginForm} />
+
+                {this.state.wasFormSubmitted && <p>Submitted!</p>}
+            </React.Fragment>
+        );
+    }
+}
 
 export default App;
