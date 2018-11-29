@@ -3,7 +3,7 @@ import App from '../App';
 import { render, fireEvent, within } from 'react-testing-library';
 
 jest.mock('dummy-third-party-library', () =>
-    jest.fn(({ hide }) => (hide ? null : 'Third party content'))
+    jest.fn(({ show }) => (show ? 'Third party content' : null))
 );
 
 describe('The App', () => {
