@@ -20,4 +20,14 @@ describe('The App', () => {
 
         expect(queryByText('Submitted!')).not.toBeNull();
     });
+
+    it('hides third party library content based on prop', () => {
+        const { queryByText, rerender } = render(<App />);
+
+        expect(queryByText(/third party/)).not.toBeNull();
+
+        rerender(<App hide={true} />);
+
+        expect(queryByText(/third party/)).toBeNull();
+    });
 });
