@@ -9,7 +9,7 @@ class App extends React.Component {
         wasFormSubmitted: false,
     };
 
-    submitLoginForm = e => {
+    submitForm = e => {
         e.preventDefault();
 
         this.setState({
@@ -23,7 +23,7 @@ class App extends React.Component {
                 <h1>Welcome to JavaScript testing, {user}!</h1>
                 <h2>Login</h2>
 
-                <LoginForm onSubmit={this.submitLoginForm} />
+                <LoginForm onSubmit={this.submitForm} />
 
                 {this.state.wasFormSubmitted && <p>Submitted!</p>}
             </React.Fragment>

@@ -10,10 +10,11 @@ describe('The App', () => {
     it('shows "Submitted!" message after login form submit', () => {
         const app = shallow(<App />);
 
-        expect(app.find('LoginForm')).not.toBeNull();
+        const loginForm = app.find('LoginForm');
+        expect(loginForm).not.toBeNull();
         expect(app.contains('Submitted!')).toBe(false);
 
-        app.instance().submitLoginForm({ preventDefault: () => null });
+        loginForm.props().onSubmit({ preventDefault: () => null });
 
         expect(app.contains('Submitted!')).toBe(true);
     });
