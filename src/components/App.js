@@ -27,7 +27,7 @@ class App extends React.Component {
 
                 {this.state.wasFormSubmitted && <p>Submitted!</p>}
 
-                <DummyThirdPartyLibrary hide={this.props.hide} />
+                <DummyThirdPartyLibrary show={!this.props.hide} />
             </React.Fragment>
         );
     }
